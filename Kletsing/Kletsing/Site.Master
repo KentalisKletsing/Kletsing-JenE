@@ -22,9 +22,9 @@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li><a runat="server" href="Fonetiek.aspx">Fonetiek</a></li>
+                        <li><a runat="server" href="Letters.aspx">Fonetiek</a></li>
                         <li><a runat="server" href="Fonologie.aspx">Fonologie</a></li>
-                        <li><a runat="server" href="Woorden.aspx">Woorden</a></li>
+                        <li><a runat="server" href="Letters.aspx">Woorden</a></li>
                         <li><a runat="server" href="Zinsbouw.aspx">Zinsbouw</a></li>
                         <li><a runat="server" href="Pragmatiek.aspx">Pragmatiek</a></li>
                         <li><a runat="server" href="Les_samenstellen.aspx">Les samenstellen</a></li>

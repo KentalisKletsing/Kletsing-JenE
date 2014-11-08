@@ -39,7 +39,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="MySql.Data, Version=6.9.4.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="MySql.Data, Version=6.9.4.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -62,37 +64,40 @@
     <Content Include="css\bootstrap.min.css" />
     <Content Include="css\Site.css" />
     <Content Include="Default.aspx" />
-    <Content Include="Fonetiek.aspx" />
-    <Content Include="Fonologie.aspx" />
+    <Content Include="Letters.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="js\bootstrap.js" />
     <Content Include="js\bootstrap.min.js" />
     <Content Include="js\npm.js" />
     <Content Include="Les_samenstellen.aspx" />
     <Content Include="Login.aspx" />
-    <Content Include="Pragmatiek.aspx" />
+    <Content Include="Fonologie.aspx" />
     <Content Include="Register.aspx" />
     <Content Include="Site.Master" />
     <Content Include="css\bootstrap.css.map" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="Woorden.aspx" />
-    <Content Include="Zinsbouw.aspx" />
+    <Content Include="Woord.aspx" />
+    <Content Include="Comm_functie.aspx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\Character.cs" />
     <Compile Include="Controllers\DBController.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -101,19 +106,12 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Fonetiek.aspx.cs">
-      <DependentUpon>Fonetiek.aspx</DependentUpon>
+    <Compile Include="Letters.aspx.cs">
+      <DependentUpon>Letters.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Fonetiek.aspx.designer.cs">
-      <DependentUpon>Fonetiek.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Fonologie.aspx.cs">
-      <DependentUpon>Fonologie.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Fonologie.aspx.designer.cs">
-      <DependentUpon>Fonologie.aspx</DependentUpon>
+    <Compile Include="Letters.aspx.designer.cs">
+      <DependentUpon>Letters.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -132,12 +130,12 @@
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Pragmatiek.aspx.cs">
-      <DependentUpon>Pragmatiek.aspx</DependentUpon>
+    <Compile Include="Fonologie.aspx.cs">
+      <DependentUpon>Fonologie.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Pragmatiek.aspx.designer.cs">
-      <DependentUpon>Pragmatiek.aspx</DependentUpon>
+    <Compile Include="Fonologie.aspx.designer.cs">
+      <DependentUpon>Fonologie.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Register.aspx.cs">
@@ -154,19 +152,19 @@
     <Compile Include="Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>
-    <Compile Include="Woorden.aspx.cs">
-      <DependentUpon>Woorden.aspx</DependentUpon>
+    <Compile Include="Woord.aspx.cs">
+      <DependentUpon>Woord.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Woorden.aspx.designer.cs">
-      <DependentUpon>Woorden.aspx</DependentUpon>
+    <Compile Include="Woord.aspx.designer.cs">
+      <DependentUpon>Woord.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Zinsbouw.aspx.cs">
-      <DependentUpon>Zinsbouw.aspx</DependentUpon>
+    <Compile Include="Comm_functie.aspx.cs">
+      <DependentUpon>Comm_functie.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Zinsbouw.aspx.designer.cs">
-      <DependentUpon>Zinsbouw.aspx</DependentUpon>
+    <Compile Include="Comm_functie.aspx.designer.cs">
+      <DependentUpon>Comm_functie.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup />

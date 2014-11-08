@@ -7,13 +7,14 @@ using System.Configuration;
 using System.Security.Cryptography;
 using System.Globalization;
 using System.Text;
+using Kletsing.Classes;
+using System.Data;
 
 namespace Kletsing.Controllers
 {
     public class DBController
     {
         private MySqlConnection connection;
-        private static int SaltValueSize = 4;
 
         /// <summary>
         /// A class for managing the database connection in the Kentalis-Klet's-sing website
@@ -25,7 +26,7 @@ namespace Kletsing.Controllers
 
         private void Initialize()
         {
-            string connStr = ConfigurationManager.ConnectionStrings["MySQLConnection"].ConnectionString;
+            string connStr = "server=localhost;Database=kletsing;Uid=kletsing;Pwd=kentalis01";
             connection = new MySqlConnection(connStr);
         }
 
@@ -74,6 +75,7 @@ namespace Kletsing.Controllers
             }
         }
 
+        //Everything to do with 'user'
         /// <summary>
         /// Hashes the password and checks it with the hashed password stored in the database
         /// </summary>
@@ -82,17 +84,56 @@ namespace Kletsing.Controllers
         /// <returns>True: Password is the same; False: Password is not the same.</returns>
         public bool CheckPassword(string userEmail, string password)
         {
-            string query = "SELECT password FROM kletsing WHERE email = @param_email;";
-            MySqlCommand command = new MySqlCommand(query, connection);
-            command.Parameters.AddWithValue("@param_email", userEmail);
-            string pw = Convert.ToString(command.ExecuteScalar());
-            if (pw == GetPasswordHash(pw))
+            try
             {
-                return true;
+                OpenConnection();
+                string query = "SELECT user_password FROM user WHERE user_email = @param_email";
+                MySqlCommand command = new MySqlCommand(query, connection);
+                command.Parameters.AddWithValue("@param_email", userEmail);
+                string pw = Convert.ToString(command.ExecuteScalar());
+                if (pw == GetPasswordHash(password))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
-            else
+            catch (MySqlException ex)
             {
-                return false;
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Adds a user with the specified email and password to the database
+        /// </summary>
+        /// <param name="userEmail"></param>
+        /// <param name="password"></param>
+        public void AddUser(string userEmail, string password)
+        {
+            try
+            {
+                OpenConnection();
+                string query = "INSERT INTO user (user_email, user_password) VALUES (@param_email, @param_password)";
+                MySqlCommand command = new MySqlCommand(query, connection);
+                command.Parameters.AddWithValue("@param_email", userEmail);
+                command.Parameters.AddWithValue("@param_password", GetPasswordHash(password));
+                command.ExecuteNonQuery();
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                CloseConnection();
             }
         }
 
@@ -114,6 +155,36 @@ namespace Kletsing.Controllers
                     hashedPassword += b.ToString("X2", CultureInfo.InvariantCulture.NumberFormat);
                 }
                 return hashedPassword;
+            }
+            return null;
+        }
+
+        //Everything to do with 'letter'
+
+        /// <summary>
+        /// Gets a DataTable with characters and the amount of words that start with said character from the database.
+        /// </summary>
+        /// <returns></returns>
+        public DataTable GetLetters()
+        {
+            try
+            {
+                OpenConnection();
+                DataTable data = new DataTable("Letters");
+                string query = "SELECT l.letter as Letter, count(w.woord) as Aantal FROM woord w RIGHT JOIN letter l ON w.letter = l.letter GROUP BY l.letter;";
+                MySqlCommand command = new MySqlCommand(query, connection);
+                MySqlDataReader reader = command.ExecuteReader();
+                data.Load(reader);
+
+                return data;
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                CloseConnection();
             }
             return null;
         }
