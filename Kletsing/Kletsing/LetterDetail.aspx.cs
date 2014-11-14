@@ -99,10 +99,14 @@ namespace Kletsing
                 //Create Test Data
                 for (int i = 0; i < 10; i++)
                 {
-                    beginTestValues.Add(RandomString.createRandomString(4, 1, chosen_letter));
+                    //beginTestValues.Add(RandomString.createRandomString(4, 1, chosen_letter));
                     midTestValues.Add(RandomString.createRandomString(4, 2, chosen_letter));
                     endTestValues.Add(RandomString.createRandomString(4, 3, chosen_letter));
                 }
+
+                beginTestValues.Add("Stip");
+                beginTestValues.Add("Stoel");
+                beginTestValues.Add("Stok");
 
                 //Sort the lists
                 beginTestValues.Sort();
@@ -119,7 +123,7 @@ namespace Kletsing
                 repeaterEnd.DataSource = endTestValues;
                 repeaterEnd.DataBind();
 
-                //Zoek in database naar woorden met de letter "chosen_letter" verdeeld in 3 cat.
+                //TODO Zoek in database naar woorden met de letter "chosen_letter" verdeeld in 3 cat.
 
 
                 lblChosen_letter.Text = "Gekozen letter: " + chosen_letter;
@@ -129,9 +133,13 @@ namespace Kletsing
             }
             else
             {
-                lblChosen_letter.Text = "Geen letter gekozen";
                 Response.Redirect("Letters.aspx");
             }
+        }
+        public void linkbtnWord_Click(object sender, CommandEventArgs e)
+        {
+            string url = "LiedPagina.aspx?woord=" + e.CommandArgument;
+            Response.Redirect(url);
         }
     }
 }

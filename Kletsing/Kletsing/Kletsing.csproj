@@ -71,6 +71,7 @@
     <Content Include="js\bootstrap.min.js" />
     <Content Include="js\npm.js" />
     <Content Include="Les_samenstellen.aspx" />
+    <Content Include="LiedPagina.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Fonologie.aspx" />
     <Content Include="Register.aspx" />
@@ -132,6 +133,13 @@
     </Compile>
     <Compile Include="Les_samenstellen.aspx.designer.cs">
       <DependentUpon>Les_samenstellen.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LiedPagina.aspx.cs">
+      <DependentUpon>LiedPagina.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LiedPagina.aspx.designer.cs">
+      <DependentUpon>LiedPagina.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
