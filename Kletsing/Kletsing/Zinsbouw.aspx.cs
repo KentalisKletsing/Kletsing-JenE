@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace Kletsing
 {
-    public partial class Zinsopbouw : System.Web.UI.Page
+    public partial class Zinsbouw : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
