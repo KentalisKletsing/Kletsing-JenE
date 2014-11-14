@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace Kletsing
 {
-    public partial class Woorden : System.Web.UI.Page
+    public partial class Woord : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

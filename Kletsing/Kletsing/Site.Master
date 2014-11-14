@@ -26,7 +26,7 @@
                         <li><a runat="server" href="Fonologie.aspx">Fonologie</a></li>
                         <li><a runat="server" href="Letters.aspx">Woorden</a></li>
                         <li><a runat="server" href="Zinsbouw.aspx">Zinsbouw</a></li>
-                        <li><a runat="server" href="Pragmatiek.aspx">Pragmatiek</a></li>
+                        <li><a runat="server" href="Comm_functie.aspx">Pragmatiek</a></li>
                         <li><a runat="server" href="Les_samenstellen.aspx">Les samenstellen</a></li>
                     </ul>
                     <asp:LoginView runat="server" ViewStateMode="Disabled">
