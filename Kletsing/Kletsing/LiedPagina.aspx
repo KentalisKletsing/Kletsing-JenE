@@ -7,7 +7,7 @@
     <br />
     <h4>Lesbrief</h4>
     <p>Klik op onderstaande link om de lesbrief te openen</p>
-    <a href="#">Lesbrief</a>
+    <a href="overzicht_kentalis_website.pdf">Lesbrief</a>
     <hr />
     <h4>Geluidsfragment</h4>
     <audio controls>
