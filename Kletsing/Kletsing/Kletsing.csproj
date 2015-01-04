@@ -81,6 +81,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="ThemaDetail.aspx" />
     <Content Include="Woord.aspx" />
     <Content Include="Comm_functie.aspx" />
     <Content Include="WoordThema.aspx" />
@@ -178,6 +179,13 @@
     </Compile>
     <Compile Include="Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="ThemaDetail.aspx.cs">
+      <DependentUpon>ThemaDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ThemaDetail.aspx.designer.cs">
+      <DependentUpon>ThemaDetail.aspx</DependentUpon>
     </Compile>
     <Compile Include="Woord.aspx.cs">
       <DependentUpon>Woord.aspx</DependentUpon>

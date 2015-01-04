@@ -11,7 +11,21 @@ namespace Kletsing
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            List<String> themas = new List<string>();
+            themas.Add("Dagelijkse Routines");
+            themas.Add("Ik");
+            themas.Add("Dieren");
+            themas.Add("Feesten");
 
+            themas.Sort();
+            repeaterThema.DataSource = themas;
+            repeaterThema.DataBind();
+        }
+
+        public void linkbtnThema_Click(object sender, CommandEventArgs e)
+        {
+            string url = "ThemaDetail.aspx?thema=" + e.CommandArgument;
+            Response.Redirect(url);
         }
     }
 }
