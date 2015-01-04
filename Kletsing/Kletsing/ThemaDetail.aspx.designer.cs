@@ -10,15 +10,24 @@
 namespace Kletsing {
     
     
-    public partial class Fonologie {
+    public partial class ThemaDetail {
         
         /// <summary>
-        /// repeaterFonologie control.
+        /// lblGekozen_thema control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater repeaterFonologie;
+        protected global::System.Web.UI.WebControls.Label lblGekozen_thema;
+        
+        /// <summary>
+        /// repeaterSong control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater repeaterSong;
     }
 }
