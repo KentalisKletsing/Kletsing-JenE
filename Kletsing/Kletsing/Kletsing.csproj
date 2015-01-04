@@ -60,6 +60,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Auditief.aspx" />
     <Content Include="css\bootstrap.css" />
     <Content Include="css\bootstrap.min.css" />
     <Content Include="css\Site.css" />
@@ -82,6 +83,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Woord.aspx" />
     <Content Include="Comm_functie.aspx" />
+    <Content Include="WoordThema.aspx" />
     <Content Include="Zinsbouw.aspx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -100,6 +102,13 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Auditief.aspx.cs">
+      <DependentUpon>Auditief.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Auditief.aspx.designer.cs">
+      <DependentUpon>Auditief.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Classes\Character.cs" />
     <Compile Include="Classes\RandomString.cs" />
     <Compile Include="Controllers\DBController.cs" />
@@ -183,6 +192,13 @@
     </Compile>
     <Compile Include="Comm_functie.aspx.designer.cs">
       <DependentUpon>Comm_functie.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WoordThema.aspx.cs">
+      <DependentUpon>WoordThema.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WoordThema.aspx.designer.cs">
+      <DependentUpon>WoordThema.aspx</DependentUpon>
     </Compile>
     <Compile Include="Zinsbouw.aspx.cs">
       <DependentUpon>Zinsbouw.aspx</DependentUpon>
