@@ -188,5 +188,75 @@ namespace Kletsing.Controllers
             }
             return null;
         }
+
+
+        ////Everything to do with 'word'
+
+        /// <summary>
+        /// Gets a datatable with all the words
+        /// </summary>
+        /// <returns></returns>
+        public DataTable GetWords()
+        {
+            try
+            {
+                OpenConnection();
+                DataTable data = new DataTable();
+
+                //Query nog maken
+                string query = "";
+                MySqlCommand command = new MySqlCommand(query, connection);
+                MySqlDataReader reader = command.ExecuteReader();
+                data.Load(reader);
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// Adds a word to the database
+        /// </summary>
+        /// <param name="word">The new word to be added</param>
+        public bool AddWord(String word)
+        {
+            try
+            {
+                OpenConnection();
+
+                //Query nog maken
+                string queryCheck = "SELECT FROM WHERE = @word";
+                MySqlCommand commandCheck = new MySqlCommand(queryCheck, connection);
+                commandCheck.Parameters.AddWithValue("@word", word);
+                if(Convert.ToString(commandCheck.ExecuteScalar()) == word)
+                {
+                    return false;
+                }
+                else
+                {
+                    //Query waarschijnlijk nog aanpassen
+                    string queryAdd = "INSERT INTO word (word) VALUES (@word)";
+                    MySqlCommand commandAdd = new MySqlCommand(queryAdd, connection);
+                    commandAdd.Parameters.AddWithValue("@word", word);
+                    commandAdd.ExecuteNonQuery();
+                    return true;
+                }
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+            return false;
+        }
     }
 }
