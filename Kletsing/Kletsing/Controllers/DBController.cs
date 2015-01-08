@@ -26,7 +26,7 @@ namespace Kletsing.Controllers
 
         private void Initialize()
         {
-            string connStr = "server=localhost;Database=kletsing;Uid=kletsing;Pwd=kentalis01";
+            string connStr = "Server=84.28.193.115;Port=3306;Database=kletsing;Uid=remoteuser;Pwd=password";
             connection = new MySqlConnection(connStr);
         }
 
@@ -34,11 +34,12 @@ namespace Kletsing.Controllers
         /// Opens the database connection
         /// </summary>
         /// <returns>Bool wether the operation succeeded</returns>
-        private bool OpenConnection()
+        public bool OpenConnection()
         {
             try
             {
                 connection.Open();
+                Console.WriteLine("Connectie");
                 return true;
             }
             catch (MySqlException ex)
@@ -146,6 +147,7 @@ namespace Kletsing.Controllers
         {
             if (password != null)
             {
+                Console.WriteLine("Test getPassword");
                 UnicodeEncoding encoding = new UnicodeEncoding();
                 byte[] binaryPassword = encoding.GetBytes(password);
                 byte[] hashValue = (new SHA1CryptoServiceProvider()).ComputeHash(binaryPassword);

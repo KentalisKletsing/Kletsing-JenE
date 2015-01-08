@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Kletsing.Controllers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,6 +13,9 @@ namespace Kletsing
         protected void Page_Load(object sender, EventArgs e)
         {
             List<String> categorien = new List<String>();
+
+            DBController db = new DBController();
+            db.OpenConnection();
 
             //Vaste categorien
             categorien.Add("Spondeeën");
