@@ -34,7 +34,7 @@ namespace Kletsing.Controllers
         /// Opens the database connection
         /// </summary>
         /// <returns>Bool wether the operation succeeded</returns>
-        public bool OpenConnection()
+        private bool OpenConnection()
         {
             try
             {
