@@ -287,5 +287,29 @@ namespace Kletsing.Controllers
             }
             return null;
         }
+
+        public DataTable getWordsByCat(String cat)
+        {
+            try
+            {
+                OpenConnection();
+                DataTable data = new DataTable("data");
+                string query = "Select woord, categorie, soortWoord From Woorden where categorie = @param_cat";
+                MySqlCommand command = new MySqlCommand(query, connection);
+                command.Parameters.AddWithValue("@param_cat", cat);
+                MySqlDataReader reader = command.ExecuteReader();
+                data.Load(reader);
+                return data;
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine("Exception: " + ex.Message);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+            return null;
+        }
     }
 }
