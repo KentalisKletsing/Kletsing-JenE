@@ -10,24 +10,15 @@
 namespace Kletsing {
     
     
-    public partial class Woord {
+    public partial class FonClusters {
         
         /// <summary>
-        /// lblCat control.
+        /// repeaterCluster control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCat;
-        
-        /// <summary>
-        /// repeaterSongs control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater repeaterSongs;
+        protected global::System.Web.UI.WebControls.Repeater repeaterCluster;
     }
 }

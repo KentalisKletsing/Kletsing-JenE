@@ -26,8 +26,8 @@ namespace Kletsing
         {
             //één dynamische pagina, of meerdere statische pagina's?
 
-            //string url = "LiedPagina.aspx?woord=" + e.CommandArgument;
-            //Response.Redirect(url);
+            string url = "Woord.aspx?cat=" + e.CommandArgument;
+            Response.Redirect(url);
         }
     }
 }

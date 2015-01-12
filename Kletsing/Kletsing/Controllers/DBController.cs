@@ -210,7 +210,6 @@ namespace Kletsing.Controllers
                 command.Parameters.AddWithValue("@param_letter", letter.ToLower());
                 MySqlDataReader reader = command.ExecuteReader();
                 data.Load(reader);
-                System.Diagnostics.Debug.WriteLine("Number of rows: " + data.Rows.Count);
                 return data;
             }
             catch (MySqlException ex)
@@ -228,14 +227,14 @@ namespace Kletsing.Controllers
         /// Adds a word to the database
         /// </summary>
         /// <param name="word">The new word to be added</param>
-        public bool AddWord(String word)
+        public bool AddWord(String word, String cat, String soortWoord)
         {
             try
             {
                 OpenConnection();
 
                 //Query nog maken
-                string queryCheck = "SELECT FROM WHERE = @word";
+                string queryCheck = "SELECT woord FROM Woorden WHERE = woord = @word";
                 MySqlCommand commandCheck = new MySqlCommand(queryCheck, connection);
                 commandCheck.Parameters.AddWithValue("@word", word);
                 if(Convert.ToString(commandCheck.ExecuteScalar()) == word)
@@ -245,9 +244,11 @@ namespace Kletsing.Controllers
                 else
                 {
                     //Query waarschijnlijk nog aanpassen
-                    string queryAdd = "INSERT INTO word (word) VALUES (@word)";
+                    string queryAdd = "INSERT INTO Woorden (naam, categorie, soortWoord) VALUES (@woord, @categorie, @soortWoord)";
                     MySqlCommand commandAdd = new MySqlCommand(queryAdd, connection);
-                    commandAdd.Parameters.AddWithValue("@word", word);
+                    commandAdd.Parameters.AddWithValue("@woord", word);
+                    commandAdd.Parameters.AddWithValue("@categorie", cat);
+                    commandAdd.Parameters.AddWithValue("@soortWoord", soortWoord);
                     commandAdd.ExecuteNonQuery();
                     return true;
                 }
@@ -261,6 +262,30 @@ namespace Kletsing.Controllers
                 CloseConnection();
             }
             return false;
+        }
+
+        public DataTable getSongsByCat(String cat)
+        {
+            try
+            {
+                OpenConnection();
+                DataTable data = new DataTable("data");
+                string query = "Select Liedje.id, Liedje.naam, Liedje.thema From Liedje, CategorieLied Where Liedje.id = CategorieLied.id and categorie = @param_cat";
+                MySqlCommand command = new MySqlCommand(query, connection);
+                command.Parameters.AddWithValue("@param_cat", cat);
+                MySqlDataReader reader = command.ExecuteReader();
+                data.Load(reader);
+                return data;
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine("Exception: " + ex.Message);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+            return null;
         }
     }
 }
