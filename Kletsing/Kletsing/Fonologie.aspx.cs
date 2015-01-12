@@ -15,7 +15,6 @@ namespace Kletsing
             List<String> categorien = new List<String>();
 
             DBController db = new DBController();
-            db.OpenConnection();
 
             //Vaste categorien
             categorien.Add("Spondeeën");

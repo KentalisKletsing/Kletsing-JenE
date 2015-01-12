@@ -39,7 +39,6 @@ namespace Kletsing.Controllers
             try
             {
                 connection.Open();
-                Console.WriteLine("Connectie");
                 return true;
             }
             catch (MySqlException ex)
@@ -198,18 +197,21 @@ namespace Kletsing.Controllers
         /// Gets a datatable with all the words
         /// </summary>
         /// <returns></returns>
-        public DataTable GetWords()
+        public DataTable GetWords(String letter)
         {
             try
             {
                 OpenConnection();
-                DataTable data = new DataTable();
+                DataTable data = new DataTable("Woorden");
 
                 //Query nog maken
-                string query = "";
+                string query = "Select * From Woorden WHERE categorie = @param_letter";
                 MySqlCommand command = new MySqlCommand(query, connection);
+                command.Parameters.AddWithValue("@param_letter", letter.ToLower());
                 MySqlDataReader reader = command.ExecuteReader();
                 data.Load(reader);
+                System.Diagnostics.Debug.WriteLine("Number of rows: " + data.Rows.Count);
+                return data;
             }
             catch (MySqlException ex)
             {

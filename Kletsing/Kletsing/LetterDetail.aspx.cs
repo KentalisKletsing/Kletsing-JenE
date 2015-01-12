@@ -4,16 +4,26 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Kletsing.Controllers;
+using System.Data;
+
 
 namespace Kletsing
 {
     public partial class LetterDetail : System.Web.UI.Page
     {
+        DBController db;
         protected void Page_Load(object sender, EventArgs e)
         {
-            List<string> beginTestValues = new List<string>();
-            List<string> midTestValues = new List<string>();
-            List<string> endTestValues = new List<string>();
+            db = new DBController();
+
+            //List<string> beginTestValues = new List<string>();
+            //List<string> midTestValues = new List<string>();
+            //List<string> endTestValues = new List<string>();
+
+            List<string> beginValues = new List<string>();
+            List<string> midValues = new List<string>();
+            List<string> endValues = new List<string>();
 
             string chosen_letter = "";
             var id = Request.QueryString["id"];
@@ -96,34 +106,66 @@ namespace Kletsing
                         break;
                 }
 
-                //Create Test Data
-                for (int i = 0; i < 10; i++)
-                {
-                    //beginTestValues.Add(RandomString.createRandomString(4, 1, chosen_letter));
-                    midTestValues.Add(RandomString.createRandomString(4, 2, chosen_letter));
-                    endTestValues.Add(RandomString.createRandomString(4, 3, chosen_letter));
-                }
+                ////Create Test Data
+                //for (int i = 0; i < 10; i++)
+                //{
+                //    //beginTestValues.Add(RandomString.createRandomString(4, 1, chosen_letter));
+                //    midTestValues.Add(RandomString.createRandomString(4, 2, chosen_letter));
+                //    endTestValues.Add(RandomString.createRandomString(4, 3, chosen_letter));
+                //}
 
-                beginTestValues.Add("Stip");
-                beginTestValues.Add("Stoel");
-                beginTestValues.Add("Stok");
+                //beginTestValues.Add("Stip");
+                //beginTestValues.Add("Stoel");
+                //beginTestValues.Add("Stok");
 
-                //Sort the lists
-                beginTestValues.Sort();
-                midTestValues.Sort();
-                endTestValues.Sort();
+                ////Sort the lists
+                //beginTestValues.Sort();
+                //midTestValues.Sort();
+                //endTestValues.Sort();
 
-                //Bind data to repeater
-                repeaterBegin.DataSource = beginTestValues;
-                repeaterBegin.DataBind();
+                ////Bind data to repeater
+                //repeaterBegin.DataSource = beginTestValues;
+                //repeaterBegin.DataBind();
 
-                repeaterMid.DataSource = midTestValues;
-                repeaterMid.DataBind();
+                //repeaterMid.DataSource = midTestValues;
+                //repeaterMid.DataBind();
 
-                repeaterEnd.DataSource = endTestValues;
-                repeaterEnd.DataBind();
+                //repeaterEnd.DataSource = endTestValues;
+                //repeaterEnd.DataBind();
 
                 //TODO Zoek in database naar woorden met de letter "chosen_letter" verdeeld in 3 cat.
+                DataTable data = db.GetWords(chosen_letter);
+                foreach(DataRow row in data.Rows)
+                {
+                    String woord = row["woord"].ToString();
+                    String categorie = row["categorie"].ToString();
+                    String soortWoord = row["soortWoord"].ToString();
+
+                    woord = char.ToUpper(woord[0]) + woord.Substring(1);
+
+                    if(soortWoord == "begin")
+                    {
+                        beginValues.Add(woord);
+                    }
+                    else if(soortWoord == "midden")
+                    {
+                        midValues.Add(woord);
+                    }
+                    else if(soortWoord == "eind")
+                    {
+                        endValues.Add(woord);
+                    }
+                }
+
+                //Bind data to repeater
+                repeaterBegin.DataSource = beginValues;
+                repeaterBegin.DataBind();
+
+                repeaterMid.DataSource = midValues;
+                repeaterMid.DataBind();
+
+                repeaterEnd.DataSource = endValues;
+                repeaterEnd.DataBind();
 
 
                 lblChosen_letter.Text = "Gekozen letter: " + chosen_letter;
@@ -138,6 +180,7 @@ namespace Kletsing
         }
         public void linkbtnWord_Click(object sender, CommandEventArgs e)
         {
+            db = null;
             string url = "LiedPagina.aspx?woord=" + e.CommandArgument;
             Response.Redirect(url);
         }
