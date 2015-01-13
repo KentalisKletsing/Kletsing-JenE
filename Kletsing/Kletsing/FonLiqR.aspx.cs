@@ -13,5 +13,11 @@ namespace Kletsing
         {
 
         }
+
+        public void linkbtnSong_Click(object sender, CommandEventArgs e)
+        {
+            string url = "LiedPagina.aspx?woord=" + e.CommandArgument;
+            Response.Redirect(url);
+        }
     }
 }

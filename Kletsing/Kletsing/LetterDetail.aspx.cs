@@ -170,8 +170,8 @@ namespace Kletsing
 
                 lblChosen_letter.Text = "Gekozen letter: " + chosen_letter;
                 lblChosen_letterBegin.Text = chosen_letter + " -";
-                lblChosen_letterMid.Text = "-" + chosen_letter.ToLower() + " - ";
-                lblChosen_letterEnd.Text = "-" + chosen_letter.ToLower();
+                lblChosen_letterMid.Text = "- " + chosen_letter.ToLower() + " - ";
+                lblChosen_letterEnd.Text = "- " + chosen_letter.ToLower();
             }
             else
             {
