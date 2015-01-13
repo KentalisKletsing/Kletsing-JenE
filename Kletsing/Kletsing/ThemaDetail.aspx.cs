@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Kletsing.Controllers;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -9,24 +11,41 @@ namespace Kletsing
 {
     public partial class ThemaDetail : System.Web.UI.Page
     {
+
+        DBController db;
         protected void Page_Load(object sender, EventArgs e)
         {
-            var chosen_word = Request.QueryString["thema"];
-            if (chosen_word != null)
+            db = new DBController();
+            List<String> songs = new List<string>();
+            songs.Clear();
+
+            var chosen_theme = Request.QueryString["thema"];
+            if (chosen_theme != null)
             {
-                lblGekozen_thema.Text = chosen_word.ToString();
+                DataTable data = db.getSongsByTheme(chosen_theme);
+
+                if(data.Rows.Count > 0)
+                {
+                    foreach (DataRow row in data.Rows)
+                    {
+                        String songNaam = row["naam"].ToString();
+                        songs.Add(songNaam);
+                    }
+                }
+                else
+                {
+                    lblNoSongs.Text = "Geen liedjes met thema " + chosen_theme.ToLower();
+                }
+                
             }
             else
             {
                 Response.Redirect("WoordThema.aspx");
             }
 
-            List<String> testSongs = new List<string>();
-            testSongs.Add("Stip");
-            testSongs.Add("Stoel");
-            testSongs.Add("Stok");
+            
 
-            repeaterSong.DataSource = testSongs;
+            repeaterSong.DataSource = songs;
             repeaterSong.DataBind();
         }
 

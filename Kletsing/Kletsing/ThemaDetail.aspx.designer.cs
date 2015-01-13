@@ -13,15 +13,6 @@ namespace Kletsing {
     public partial class ThemaDetail {
         
         /// <summary>
-        /// lblGekozen_thema control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblGekozen_thema;
-        
-        /// <summary>
         /// repeaterSong control.
         /// </summary>
         /// <remarks>
@@ -29,5 +20,14 @@ namespace Kletsing {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater repeaterSong;
+        
+        /// <summary>
+        /// lblNoSongs control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblNoSongs;
     }
 }

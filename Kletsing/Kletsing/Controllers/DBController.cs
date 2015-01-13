@@ -313,5 +313,30 @@ namespace Kletsing.Controllers
             }
             return null;
         }
+
+        public DataTable getSongsByTheme(String theme)
+        {
+            try
+            {
+                OpenConnection();
+                DataTable data = new DataTable("data");
+                string query = "SELECT * FROM Liedje where thema = @param_theme";
+                MySqlCommand command = new MySqlCommand(query, connection);
+                command.Parameters.AddWithValue("@param_theme", theme.ToLower());
+                MySqlDataReader reader = command.ExecuteReader();
+                data.Load(reader);
+                return data;
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine("Exception: " + ex.Message);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+            return null;
+        }
+        
     }
 }
