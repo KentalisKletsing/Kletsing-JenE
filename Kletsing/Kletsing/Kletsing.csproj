@@ -64,8 +64,14 @@
     <Content Include="css\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="FonClusters.aspx" />
+    <Content Include="FonContrast.aspx" />
+    <Content Include="FonFricatieven.aspx" />
     <Content Include="FonGlijklanken.aspx" />
+    <Content Include="FonLiqL.aspx" />
+    <Content Include="FonLiqR.aspx" />
     <Content Include="FonNasalen.aspx" />
+    <Content Include="FonSpond.aspx" />
+    <Content Include="FonVroegeOnt.aspx" />
     <Content Include="LetterDetail.aspx" />
     <Content Include="Letters.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -128,6 +134,20 @@
     <Compile Include="FonClusters.aspx.designer.cs">
       <DependentUpon>FonClusters.aspx</DependentUpon>
     </Compile>
+    <Compile Include="FonContrast.aspx.cs">
+      <DependentUpon>FonContrast.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FonContrast.aspx.designer.cs">
+      <DependentUpon>FonContrast.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FonFricatieven.aspx.cs">
+      <DependentUpon>FonFricatieven.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FonFricatieven.aspx.designer.cs">
+      <DependentUpon>FonFricatieven.aspx</DependentUpon>
+    </Compile>
     <Compile Include="FonGlijklanken.aspx.cs">
       <DependentUpon>FonGlijklanken.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -135,12 +155,40 @@
     <Compile Include="FonGlijklanken.aspx.designer.cs">
       <DependentUpon>FonGlijklanken.aspx</DependentUpon>
     </Compile>
+    <Compile Include="FonLiqL.aspx.cs">
+      <DependentUpon>FonLiqL.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FonLiqL.aspx.designer.cs">
+      <DependentUpon>FonLiqL.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FonLiqR.aspx.cs">
+      <DependentUpon>FonLiqR.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FonLiqR.aspx.designer.cs">
+      <DependentUpon>FonLiqR.aspx</DependentUpon>
+    </Compile>
     <Compile Include="FonNasalen.aspx.cs">
       <DependentUpon>FonNasalen.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="FonNasalen.aspx.designer.cs">
       <DependentUpon>FonNasalen.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FonSpond.aspx.cs">
+      <DependentUpon>FonSpond.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FonSpond.aspx.designer.cs">
+      <DependentUpon>FonSpond.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FonVroegeOnt.aspx.cs">
+      <DependentUpon>FonVroegeOnt.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FonVroegeOnt.aspx.designer.cs">
+      <DependentUpon>FonVroegeOnt.aspx</DependentUpon>
     </Compile>
     <Compile Include="LetterDetail.aspx.cs">
       <DependentUpon>LetterDetail.aspx</DependentUpon>
