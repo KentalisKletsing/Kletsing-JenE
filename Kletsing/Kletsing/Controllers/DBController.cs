@@ -87,7 +87,7 @@ namespace Kletsing.Controllers
             try
             {
                 OpenConnection();
-                string query = "SELECT user_password FROM user WHERE user_email = @param_email";
+                string query = "SELECT password FROM User WHERE email = @param_email";
                 MySqlCommand command = new MySqlCommand(query, connection);
                 command.Parameters.AddWithValue("@param_email", userEmail);
                 string pw = Convert.ToString(command.ExecuteScalar());
@@ -116,16 +116,17 @@ namespace Kletsing.Controllers
         /// </summary>
         /// <param name="userEmail"></param>
         /// <param name="password"></param>
-        public void AddUser(string userEmail, string password)
+        public bool AddUser(string userEmail, string password)
         {
             try
             {
                 OpenConnection();
-                string query = "INSERT INTO user (user_email, user_password) VALUES (@param_email, @param_password)";
+                string query = "INSERT INTO User (email, password, soort) VALUES (@param_email, @param_password, 'default')";
                 MySqlCommand command = new MySqlCommand(query, connection);
                 command.Parameters.AddWithValue("@param_email", userEmail);
                 command.Parameters.AddWithValue("@param_password", GetPasswordHash(password));
                 command.ExecuteNonQuery();
+                return true;
             }
             catch (MySqlException ex)
             {
@@ -135,6 +136,7 @@ namespace Kletsing.Controllers
             {
                 CloseConnection();
             }
+            return false;
         }
 
         /// <summary>
@@ -149,7 +151,7 @@ namespace Kletsing.Controllers
                 Console.WriteLine("Test getPassword");
                 UnicodeEncoding encoding = new UnicodeEncoding();
                 byte[] binaryPassword = encoding.GetBytes(password);
-                byte[] hashValue = (new SHA1CryptoServiceProvider()).ComputeHash(binaryPassword);
+                byte[] hashValue = (new MD5CryptoServiceProvider()).ComputeHash(binaryPassword);
                 string hashedPassword = String.Empty;
                 foreach (byte b in hashValue)
                 {

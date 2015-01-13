@@ -5,21 +5,27 @@
     <div class="row">
         <div class="col-md-8">
             <div class="form-signin" role="form">
-                <h2 class="form-signin-heading">Please sign in</h2>
-                <input type="email" class="form-control" placeholder="Email address" required autofocus>
-                <input type="password" class="form-control" placeholder="Password" required>
+                <h2 class="form-signin-heading">Log in</h2>
+                <asp:TextBox runat="server" ID="textEmail" type="email" class="form-control" placeholder="Email-adres" autofocus="autofocus" />
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator1"
+                    ControlToValidate="textEmail"
+                    Display="Dynamic"
+                    ErrorMessage="Cannot be empty."
+                    runat="server" />
+                <asp:TextBox runat="server" ID="textPassword" TextMode="password" class="form-control" placeholder="Wachtwoord"/>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator2"
+                    ControlToValidate="textPassword"
+                    ErrorMessage="Cannot be empty."
+                    runat="server" />
                 <div class="checkbox">
-                    <label>
-                        <input type="checkbox" value="remember-me">
-                        Remember me
-                    </label>
+                    <asp:CheckBox ID="Persist" runat="server" />
+                    Remember me?
                 </div>
-                <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                <asp:Button runat="server" ID="Submit1" class="btn btn-lg btn-primary btn-block" Text="Log in" OnClick="LogIn" />
+                <p>
+                    <asp:Label ID="Msg" ForeColor="Red" runat="server" />
+                </p>
             </div>
-        </div>
-        <div class="col-md-4">
-            <section id="socialLoginForm">
-            </section>
         </div>
     </div>
 </asp:Content>
