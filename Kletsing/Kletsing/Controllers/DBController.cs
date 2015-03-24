@@ -26,7 +26,7 @@ namespace Kletsing.Controllers
 
         private void Initialize()
         {
-            string connStr = "Server=84.28.193.115;Port=3306;Database=kletsing;Uid=remoteuser;Pwd=password";
+            string connStr = "Server=84.28.193.115;Port=3306;Database=kletsing;Uid=remoteuser;Pwd=420blaze";
             connection = new MySqlConnection(connStr);
         }
 
