@@ -72,6 +72,9 @@
     <Content Include="FonNasalen.aspx" />
     <Content Include="FonSpond.aspx" />
     <Content Include="FonVroegeOnt.aspx" />
+    <Content Include="images\add_icon.png" />
+    <Content Include="Lessen.aspx" />
+    <Content Include="LesDetail.aspx" />
     <Content Include="LetterDetail.aspx" />
     <Content Include="Letters.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -189,6 +192,20 @@
     </Compile>
     <Compile Include="FonVroegeOnt.aspx.designer.cs">
       <DependentUpon>FonVroegeOnt.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Lessen.aspx.cs">
+      <DependentUpon>Lessen.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Lessen.aspx.designer.cs">
+      <DependentUpon>Lessen.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LesDetail.aspx.cs">
+      <DependentUpon>LesDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LesDetail.aspx.designer.cs">
+      <DependentUpon>LesDetail.aspx</DependentUpon>
     </Compile>
     <Compile Include="LetterDetail.aspx.cs">
       <DependentUpon>LetterDetail.aspx</DependentUpon>
