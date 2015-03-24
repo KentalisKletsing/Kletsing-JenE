@@ -239,7 +239,7 @@ namespace Kletsing.Controllers
                 string queryCheck = "SELECT woord FROM Woorden WHERE = woord = @word";
                 MySqlCommand commandCheck = new MySqlCommand(queryCheck, connection);
                 commandCheck.Parameters.AddWithValue("@word", word);
-                if(Convert.ToString(commandCheck.ExecuteScalar()) == word)
+                if (Convert.ToString(commandCheck.ExecuteScalar()) == word)
                 {
                     return false;
                 }
@@ -337,6 +337,81 @@ namespace Kletsing.Controllers
             }
             return null;
         }
-        
+
+        public DataTable getLessons()
+        {
+            try
+            {
+                OpenConnection();
+                DataTable data = new DataTable("data");
+                string query = "SELECT lesnaam FROM les";
+                MySqlCommand command = new MySqlCommand(query, connection);
+
+                MySqlDataReader reader = command.ExecuteReader();
+                data.Load(reader);
+                return data;
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine("Exception: " + ex.Message);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+            return null;
+
+        }
+
+        public int getLessonIdByLessonName(string lessonName)
+        {
+            int result_id = 0;
+            try
+            {
+                OpenConnection();
+                DataTable data = new DataTable("data");
+                string query = "SELECT id FROM les WHERE lesnaam = @param_lesnaam";
+                MySqlCommand command = new MySqlCommand(query, connection);
+                command.Parameters.AddWithValue("param_lesnaam", lessonName);
+                result_id = (int) command.ExecuteScalar();
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine("Exception: " + ex.Message);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+            return result_id;
+        }
+
+        public Lesson getLessonById(int id)
+        {
+            try
+            {
+                OpenConnection();
+                DataTable data = new DataTable("data");
+                string query = "SELECT * FROM les where id = @param_id";
+                MySqlCommand command = new MySqlCommand(query, connection);
+                command.Parameters.AddWithValue("@param_id", id);
+                MySqlDataReader reader = command.ExecuteReader();
+                data.Load(reader);
+                
+                foreach(DataRow row in data.Rows)
+                {
+
+                }
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine("Exception: " + ex.Message);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+            return null;
+        }
     }
 }

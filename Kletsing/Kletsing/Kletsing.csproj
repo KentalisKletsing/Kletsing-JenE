@@ -121,6 +121,7 @@
       <DependentUpon>Auditief.aspx</DependentUpon>
     </Compile>
     <Compile Include="Classes\Character.cs" />
+    <Compile Include="Classes\Lesson.cs" />
     <Compile Include="Classes\RandomString.cs" />
     <Compile Include="Controllers\DBController.cs" />
     <Compile Include="Default.aspx.cs">
