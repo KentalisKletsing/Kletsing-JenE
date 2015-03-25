@@ -74,7 +74,6 @@
     <Content Include="FonVroegeOnt.aspx" />
     <Content Include="images\add_icon.png" />
     <Content Include="Lessen.aspx" />
-    <Content Include="LesDetail.aspx" />
     <Content Include="LetterDetail.aspx" />
     <Content Include="Letters.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -85,6 +84,8 @@
     <Content Include="LiedPagina.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Fonologie.aspx" />
+    <Content Include="Manage.aspx" />
+    <Content Include="NewLied.aspx" />
     <Content Include="Register.aspx" />
     <Content Include="Site.Master" />
     <Content Include="css\bootstrap.css.map" />
@@ -201,13 +202,6 @@
     <Compile Include="Lessen.aspx.designer.cs">
       <DependentUpon>Lessen.aspx</DependentUpon>
     </Compile>
-    <Compile Include="LesDetail.aspx.cs">
-      <DependentUpon>LesDetail.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="LesDetail.aspx.designer.cs">
-      <DependentUpon>LesDetail.aspx</DependentUpon>
-    </Compile>
     <Compile Include="LetterDetail.aspx.cs">
       <DependentUpon>LetterDetail.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -252,6 +246,20 @@
     </Compile>
     <Compile Include="Fonologie.aspx.designer.cs">
       <DependentUpon>Fonologie.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Manage.aspx.cs">
+      <DependentUpon>Manage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Manage.aspx.designer.cs">
+      <DependentUpon>Manage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="NewLied.aspx.cs">
+      <DependentUpon>NewLied.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NewLied.aspx.designer.cs">
+      <DependentUpon>NewLied.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Register.aspx.cs">

@@ -235,25 +235,13 @@ namespace Kletsing.Controllers
             {
                 OpenConnection();
 
-                //Query nog maken
-                string queryCheck = "SELECT woord FROM Woorden WHERE = woord = @word";
-                MySqlCommand commandCheck = new MySqlCommand(queryCheck, connection);
-                commandCheck.Parameters.AddWithValue("@word", word);
-                if (Convert.ToString(commandCheck.ExecuteScalar()) == word)
-                {
-                    return false;
-                }
-                else
-                {
-                    //Query waarschijnlijk nog aanpassen
-                    string queryAdd = "INSERT INTO Woorden (naam, categorie, soortWoord) VALUES (@woord, @categorie, @soortWoord)";
-                    MySqlCommand commandAdd = new MySqlCommand(queryAdd, connection);
-                    commandAdd.Parameters.AddWithValue("@woord", word);
-                    commandAdd.Parameters.AddWithValue("@categorie", cat);
-                    commandAdd.Parameters.AddWithValue("@soortWoord", soortWoord);
-                    commandAdd.ExecuteNonQuery();
-                    return true;
-                }
+                string queryAdd = "INSERT INTO Woorden (woord, categorie, soortWoord) VALUES (@woord, @categorie, @soortWoord)";
+                MySqlCommand commandAdd = new MySqlCommand(queryAdd, connection);
+                commandAdd.Parameters.AddWithValue("@woord", word);
+                commandAdd.Parameters.AddWithValue("@categorie", cat);
+                commandAdd.Parameters.AddWithValue("@soortWoord", soortWoord);
+                commandAdd.ExecuteNonQuery();
+                return true;
             }
             catch (MySqlException ex)
             {
@@ -373,7 +361,7 @@ namespace Kletsing.Controllers
                 string query = "SELECT id FROM les WHERE lesnaam = @param_lesnaam";
                 MySqlCommand command = new MySqlCommand(query, connection);
                 command.Parameters.AddWithValue("param_lesnaam", lessonName);
-                result_id = (int) command.ExecuteScalar();
+                result_id = (int)command.ExecuteScalar();
             }
             catch (MySqlException ex)
             {
@@ -397,10 +385,10 @@ namespace Kletsing.Controllers
                 command.Parameters.AddWithValue("@param_id", id);
                 MySqlDataReader reader = command.ExecuteReader();
                 data.Load(reader);
-                
-                foreach(DataRow row in data.Rows)
+
+                foreach (DataRow row in data.Rows)
                 {
-                    
+
                 }
             }
             catch (MySqlException ex)
@@ -412,6 +400,107 @@ namespace Kletsing.Controllers
                 CloseConnection();
             }
             return null;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="filename">The filename of the song</param>
+        /// <param name="name">The name of the song</param>
+        /// <param name="theme">The theme of the song</param>
+        /// <param name="words">The words this song is relevant to</param>
+        /// <returns></returns>
+        public bool addSong(string filename, string name, string theme, List<string> words)
+        {
+            try
+            {
+                OpenConnection();
+
+                string queryAdd = "INSERT INTO liedje (naam, filename, thema) VALUES (@naam, @filename, @thema)";
+                MySqlCommand commandAdd = new MySqlCommand(queryAdd, connection);
+                commandAdd.Parameters.AddWithValue("@naam", name);
+                commandAdd.Parameters.AddWithValue("@filename", filename);
+                commandAdd.Parameters.AddWithValue("@thema", theme);
+                commandAdd.ExecuteNonQuery();
+
+                string query1 = "SELECT id FROM liedje WHERE filename=@filename";
+                MySqlCommand command1 = new MySqlCommand(query1, connection);
+                command1.Parameters.AddWithValue("@filename", filename);
+                MySqlDataReader reader = command1.ExecuteReader();
+                int id = -1;
+                while (reader.Read())
+                {
+                    id = reader.GetInt32("id");
+
+                }
+                foreach (string word in words)
+                {
+                    string query2 = "INSERT INTO woord_liedje (idliedje, woord) VALUES (@id, @word)";
+                    MySqlCommand command2 = new MySqlCommand(query2, connection);
+                    command2.Parameters.AddWithValue("@id", id);
+                    command2.Parameters.AddWithValue("@word", word);
+                    command2.ExecuteNonQuery();
+                }
+
+                return true;
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+            return false;
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="filename">The filename of the song</param>
+        /// <param name="words">The words this song is relevant to</param>
+        /// <returns></returns>
+        public bool addVideo(string filename, List<string> words)
+        {
+            try
+            {
+                OpenConnection();
+
+                string queryAdd = "INSERT INTO video (filename) VALUES (@filename)";
+                MySqlCommand commandAdd = new MySqlCommand(queryAdd, connection);
+                commandAdd.Parameters.AddWithValue("@filename", filename);
+                commandAdd.ExecuteNonQuery();
+
+                string query1 = "SELECT id FROM video WHERE filename=@filename";
+                MySqlCommand command1 = new MySqlCommand(query1, connection);
+                command1.Parameters.AddWithValue("@filename", filename);
+                MySqlDataReader reader = command1.ExecuteReader();
+                int id = -1;
+                while (reader.Read())
+                {
+                    id = reader.GetInt32("id");
+
+                }
+                foreach (string word in words)
+                {
+                    string query2 = "INSERT INTO woord_video (idvideo, woord) VALUES (@id, @word)";
+                    MySqlCommand command2 = new MySqlCommand(query2, connection);
+                    command2.Parameters.AddWithValue("@id", id);
+                    command2.Parameters.AddWithValue("@word", word);
+                    command2.ExecuteNonQuery();
+                }
+
+                return true;
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+            return false;
         }
     }
 }

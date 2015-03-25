@@ -9,56 +9,58 @@
     <link href="css/Site.css" rel="stylesheet" />
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" runat="server" href="Default.aspx">Kletsing</a>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a runat="server" href="Letters.aspx">Fonetiek</a></li>
-                    <li><a runat="server" href="Fonologie.aspx">Fonologie</a></li>
-                    <li><a runat="server" href="Letters.aspx">Woorden</a></li>
-                    <li><a runat="server" href="Zinsbouw.aspx">Zinsbouw</a></li>
-                    <li><a runat="server" href="Comm_functie.aspx">Pragmatiek</a></li>
-                    <li><a runat="server" href="Auditief.aspx">Auditief</a></li>
-                    <li><a runat="server" href="WoordThema.aspx">Thema</a></li>
-                    <li><a runat="server" href="Lessen.aspx">Lessen</a></li>
-                </ul>
-                <asp:LoginView runat="server" ViewStateMode="Disabled">
-                    <AnonymousTemplate>
-                        <ul class="nav navbar-nav navbar-right">
-                            <li><a runat="server" href="Register.aspx">Register</a></li>
-                            <li><a runat="server" href="Login.aspx">Log in</a></li>
-                        </ul>
-                    </AnonymousTemplate>
-                    <LoggedInTemplate>
-                        <ul class="nav navbar-nav navbar-right">
-                            <li><a runat="server" href="Manage.aspx" title="Manage your account">Hello, <%: Session["UserName"]  %></a></li>
-                            <li>
-                                <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="Default.aspx" OnLoggingOut="LogOut" />
-                            </li>
-                        </ul>
-                    </LoggedInTemplate>
-                </asp:LoginView>
+    <form id="form1" runat="server">
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" runat="server" href="Default.aspx">Kletsing</a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a runat="server" href="Letters.aspx">Fonetiek</a></li>
+                        <li><a runat="server" href="Fonologie.aspx">Fonologie</a></li>
+                        <li><a runat="server" href="Letters.aspx">Woorden</a></li>
+                        <li><a runat="server" href="Zinsbouw.aspx">Zinsbouw</a></li>
+                        <li><a runat="server" href="Comm_functie.aspx">Pragmatiek</a></li>
+                        <li><a runat="server" href="Auditief.aspx">Auditief</a></li>
+                        <li><a runat="server" href="WoordThema.aspx">Thema</a></li>
+                        <li><a runat="server" href="Lessen.aspx">Lessen</a></li>
+                    </ul>
+                    <asp:LoginView runat="server" ViewStateMode="Disabled">
+                        <AnonymousTemplate>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><a runat="server" href="Register.aspx">Register</a></li>
+                                <li><a runat="server" href="Login.aspx">Log in</a></li>
+                            </ul>
+                        </AnonymousTemplate>
+                        <LoggedInTemplate>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><a runat="server" href="Manage.aspx" title="Manage your account">Hello, <%: Session["UserName"]  %></a></li>
+                                <li>
+                                    <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="Default.aspx" OnLoggingOut="LogOut" />
+                                </li>
+                            </ul>
+                        </LoggedInTemplate>
+                    </asp:LoginView>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="container body-content">
-        <asp:ContentPlaceHolder ID="MainContent" runat="server">
-        </asp:ContentPlaceHolder>
-        <hr />
-        <footer>
-            <p>&copy; <%: DateTime.Now.Year %> - Kentalis</p>
-        </footer>
-    </div>
-    <!-- Bootstrap core JavaScript-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+        <div class="container body-content">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+            <hr />
+            <footer>
+                <p>&copy; <%: DateTime.Now.Year %> - Kentalis</p>
+            </footer>
+        </div>
+        <!-- Bootstrap core JavaScript-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+    </form>
 </body>
 </html>

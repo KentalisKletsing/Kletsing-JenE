@@ -7,8 +7,8 @@ namespace Kletsing.Classes
 {
     public class Lesson
     {
-        private int id { get; }
-        private string email { get; }
+        private int id { get; set; }
+        private string email { get; set; }
         private string lessonName { get; set; }
 
         private string klaarzetten { get; set; }
