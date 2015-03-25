@@ -398,10 +398,25 @@ namespace Kletsing.Controllers
                 MySqlDataReader reader = command.ExecuteReader();
                 data.Load(reader);
                 
+                string email = "";
                 foreach(DataRow row in data.Rows)
                 {
-                    
+                    email = row["email"].ToString();
                 }
+
+                Lesson lesson = new Lesson(id, email);
+                foreach (DataRow row in data.Rows)
+                {
+                    lesson.lessonName = row["lesnaam"].ToString();
+                    lesson.klaarzetten = row["klaarzetten"].ToString();
+                    lesson.groepsopstelling = row["groepsopstelling"].ToString();
+                    lesson.introductie = row["introductie"].ToString();
+                    lesson.passief = row["passief"].ToString();
+                    lesson.actief = row["actief"].ToString();
+                    lesson.zingen = row["zingen"].ToString();
+                    lesson.variaties = row["variaties"].ToString();
+                }
+                return lesson;
             }
             catch (MySqlException ex)
             {
@@ -412,6 +427,63 @@ namespace Kletsing.Controllers
                 CloseConnection();
             }
             return null;
+        }
+
+        public void updateLessonById(Lesson lesson)
+        {
+            Lesson les = lesson;
+            try
+            {
+                OpenConnection();
+                string query = "UPDATE les SET lesnaam = @param_lesnaam, klaarzetten = @param_klaarzetten, groepsopstelling = @param_groepsopstelling, introductie = @param_introductie, passief = @param_passief, actief = @param_actief, zingen = @param_zingen, variaties = @param_variaties";
+                MySqlCommand command = new MySqlCommand(query, connection);
+                command.Parameters.AddWithValue("@param_lesnaam", les.lessonName);
+                command.Parameters.AddWithValue("@param_klaarzetten", les.klaarzetten);
+                command.Parameters.AddWithValue("@param_groepsopstelling", les.groepsopstelling);
+                command.Parameters.AddWithValue("@param_introductie", les.introductie);
+                command.Parameters.AddWithValue("@param_passief", les.passief);
+                command.Parameters.AddWithValue("@param_actief", les.actief);
+                command.Parameters.AddWithValue("@param_zingen", les.zingen);
+                command.Parameters.AddWithValue("@param_variaties", les.variaties);
+                command.ExecuteNonQuery();
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine("Exception: " + ex.Message);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
+        public void addLesson(Lesson lesson)
+        {
+            Lesson les = lesson;
+            try
+            {
+                OpenConnection();
+                string query = "INSERT INTO les (email, lesnaam, klaarzetten, groepsopstelling, introductie, passief, actief, zingen, variaties) values(@param_email, @param_lesnaam, @param_klaarzetten, @param_groepsopstelling, @param_introductie, @param_passief, @param_actief, @param_zingen, @param_variaties)";
+                MySqlCommand command = new MySqlCommand(query, connection);
+                command.Parameters.AddWithValue("@param_email", les.email);
+                command.Parameters.AddWithValue("@param_lesnaam", les.lessonName);
+                command.Parameters.AddWithValue("@param_klaarzetten", les.klaarzetten);
+                command.Parameters.AddWithValue("@param_groepsopstelling", les.groepsopstelling);
+                command.Parameters.AddWithValue("@param_introductie", les.introductie);
+                command.Parameters.AddWithValue("@param_passief", les.passief);
+                command.Parameters.AddWithValue("@param_actief", les.actief);
+                command.Parameters.AddWithValue("@param_zingen", les.zingen);
+                command.Parameters.AddWithValue("@param_variaties", les.variaties);
+                command.ExecuteNonQuery();
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine("Exception: " + ex.Message);
+            }
+            finally
+            {
+                CloseConnection();
+            }
         }
     }
 }
