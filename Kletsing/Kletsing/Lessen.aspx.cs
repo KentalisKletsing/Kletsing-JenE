@@ -35,10 +35,24 @@ namespace Kletsing
 
         public void linkbtnLesson_Click(object sender, CommandEventArgs e)
         {
+            
+        }
+
+        public void linkbtnOpenen_Click(object sender, CommandEventArgs e)
+        {
             int id = db.getLessonIdByLessonName(e.CommandArgument.ToString());
             db = null;
 
             string url = "LesDetail.aspx?les=" + id;
+            Response.Redirect(url);
+        }
+
+        public void linkbtnBewerken_Click(object sender, CommandEventArgs e)
+        {
+            int id = db.getLessonIdByLessonName(e.CommandArgument.ToString());
+            db = null;
+
+            string url = "LesEdit.aspx?les=" + id;
             Response.Redirect(url);
         }
     }

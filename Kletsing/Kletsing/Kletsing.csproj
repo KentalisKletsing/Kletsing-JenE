@@ -74,6 +74,9 @@
     <Content Include="FonVroegeOnt.aspx" />
     <Content Include="images\add_icon.png" />
     <Content Include="Lessen.aspx" />
+    <Content Include="LesDetail.aspx" />
+    <Content Include="Lessen.aspx" />
+    <Content Include="LesEdit.aspx" />
     <Content Include="LetterDetail.aspx" />
     <Content Include="Letters.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -86,6 +89,7 @@
     <Content Include="Fonologie.aspx" />
     <Content Include="Manage.aspx" />
     <Content Include="NewLied.aspx" />
+    <Content Include="NewLesson.aspx" />
     <Content Include="Register.aspx" />
     <Content Include="Site.Master" />
     <Content Include="css\bootstrap.css.map" />
@@ -195,12 +199,26 @@
     <Compile Include="FonVroegeOnt.aspx.designer.cs">
       <DependentUpon>FonVroegeOnt.aspx</DependentUpon>
     </Compile>
+    <Compile Include="LesDetail.aspx.cs">
+      <DependentUpon>LesDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LesDetail.aspx.designer.cs">
+      <DependentUpon>LesDetail.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Lessen.aspx.cs">
       <DependentUpon>Lessen.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Lessen.aspx.designer.cs">
       <DependentUpon>Lessen.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LesEdit.aspx.cs">
+      <DependentUpon>LesEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LesEdit.aspx.designer.cs">
+      <DependentUpon>LesEdit.aspx</DependentUpon>
     </Compile>
     <Compile Include="LetterDetail.aspx.cs">
       <DependentUpon>LetterDetail.aspx</DependentUpon>
@@ -260,6 +278,12 @@
     </Compile>
     <Compile Include="NewLied.aspx.designer.cs">
       <DependentUpon>NewLied.aspx</DependentUpon>
+    <Compile Include="NewLesson.aspx.cs">
+      <DependentUpon>NewLesson.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NewLesson.aspx.designer.cs">
+      <DependentUpon>NewLesson.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Register.aspx.cs">
@@ -338,7 +362,7 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>
