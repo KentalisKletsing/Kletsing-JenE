@@ -1,6 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="NewLesson.aspx.cs" Inherits="Kletsing.NewLesson" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-        <form runat="server">
             <h3>Naam</h3>
             <p><asp:TextBox runat="server" ID="tbName" Height="100" Width="400" TextMode="MultiLine" Wrap="true"></asp:TextBox></p>
 
@@ -36,5 +35,4 @@
             OnClick="btnSave_Click"
             Text="Opslaan">
         </asp:Button>
-    </form>
 </asp:Content>

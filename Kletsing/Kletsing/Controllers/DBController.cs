@@ -378,6 +378,7 @@ namespace Kletsing.Controllers
         {
             try
             {
+                string email = "";
                 OpenConnection();
                 DataTable data = new DataTable("data");
                 string query = "SELECT * FROM les where id = @param_id";
@@ -460,6 +461,9 @@ namespace Kletsing.Controllers
             catch (MySqlException ex)
             {
                 Console.WriteLine(ex.Message);
+            }
+            return false;
+        }
         public void updateLessonById(Lesson lesson)
         {
             Lesson les = lesson;
@@ -486,7 +490,6 @@ namespace Kletsing.Controllers
             {
                 CloseConnection();
             }
-            return false;
         }
         /// <summary>
         ///
@@ -529,6 +532,8 @@ namespace Kletsing.Controllers
             catch (MySqlException ex)
             {
                 Console.WriteLine(ex.Message);
+            }
+            return false;
         }
 
         public void addLesson(Lesson lesson)
@@ -558,7 +563,6 @@ namespace Kletsing.Controllers
             {
                 CloseConnection();
             }
-            return false;
         }
     }
 }

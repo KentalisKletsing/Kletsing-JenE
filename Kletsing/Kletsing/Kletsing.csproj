@@ -75,7 +75,6 @@
     <Content Include="images\add_icon.png" />
     <Content Include="Lessen.aspx" />
     <Content Include="LesDetail.aspx" />
-    <Content Include="Lessen.aspx" />
     <Content Include="LesEdit.aspx" />
     <Content Include="LetterDetail.aspx" />
     <Content Include="Letters.aspx" />
@@ -278,6 +277,7 @@
     </Compile>
     <Compile Include="NewLied.aspx.designer.cs">
       <DependentUpon>NewLied.aspx</DependentUpon>
+    </Compile>
     <Compile Include="NewLesson.aspx.cs">
       <DependentUpon>NewLesson.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -336,7 +336,6 @@
       <DependentUpon>Zinsbouw.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
